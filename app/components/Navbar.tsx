@@ -21,20 +21,26 @@ const Navbar = () => {
         </Link>
       </div>
       {/* CENTER */}
-      <div className="hidden md:flex w-[50%] md:pl-8">
+      <div className="hidden md:flex w-[50%] md:pl-4 items-center justify-between">
         {/* LINKS */}
         <div className="flex gap-6  text-white">
-          <Link href="/" className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-2 hover:text-green-400"
+          >
             <Image
               src="/home.png"
               alt="Home"
-              width={16}
-              height={16}
-              className="w-4 h-4"
+              width={14}
+              height={14}
+              className="w-3 h-3"
             />
             <span>Home</span>
           </Link>
-          <Link href="/" className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-2 hover:text-green-400"
+          >
             <Image
               src="/friends.png"
               alt="Friends"
@@ -44,7 +50,10 @@ const Navbar = () => {
             />
             <span>Friends</span>
           </Link>
-          <Link href="/" className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-2 hover:text-green-400"
+          >
             <Image
               src="/stories.png"
               alt="Stories"
@@ -54,6 +63,13 @@ const Navbar = () => {
             />
             <span>Stories</span>
           </Link>
+        </div>
+        <div className="hidden xl:flex ml-20 bg-slate-800 px-2 items-center outline-none rounded-lg">
+          <input
+            type="text"
+            placeholder="search..."
+            className="w-40 bg-slate-800"
+          />
         </div>
       </div>
       {/* RIGHT */}
@@ -66,7 +82,15 @@ const Navbar = () => {
         </ClerkLoading>
         <ClerkLoaded>
           <SignedIn>
-            <div className="cursor-pointer">
+            <div className="cursor-pointer hover:border-2 rounded-full">
+              <Image
+                src="/people.png"
+                alt="people"
+                width={20}
+                height={20}
+              ></Image>
+            </div>
+            <div className="cursor-pointer hover:border-2 rounded-full">
               <Image
                 src="/messages.png"
                 alt="messages"
@@ -74,7 +98,7 @@ const Navbar = () => {
                 height={20}
               ></Image>
             </div>
-            <div className="cursor-pointer">
+            <div className="cursor-pointer hover:border-2 rounded-full">
               <Image
                 src="/notifications.png"
                 alt="notifications"
