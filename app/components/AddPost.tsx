@@ -34,7 +34,7 @@ const AddPost = () => {
           className="flex gap-4"
         >
           <textarea
-            placeholder="Do you post something?"
+            placeholder="Start writing here"
             className="bg-slate-600 rounded-lg flex-1 p-2"
             name="desc"
             onChange={(e) => setDesc(e.target.value)}
