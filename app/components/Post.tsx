@@ -1,88 +1,64 @@
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
+import PostInfo from "./PostInfo";
 import Comments from "./Comments";
+import { Post as PostType, User } from "@prisma/client";
+import PostInteraction from "./PostInteraction";
+import { auth } from "@clerk/nextjs/server";
 
-const Post = () => {
+type FeedPostType = PostType & { user: User } & {
+  likes: [{ userId: string }];
+} & { _count: { comments: number } };
+
+const Post = async ({ post }: { post: FeedPostType }) => {
+  const { userId } = await auth();
+
   return (
     <div className="flex flex-col gap-4">
       {/* USER */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Image
-            src="/pexels-axp-photography-500641970-16563675.jpg"
+            src={post.user.avatar || "/noAvatar.png"}
             alt=""
             width={40}
             height={40}
             className="w-10 h-10 rounded-full"
           ></Image>
-          <span className="font-medium">Ronnie O'Sullivan</span>
+          <span className="font-medium">
+            {post.user.name && post.user.surname
+              ? post.user.name + " " + post.user.surname
+              : post.user.username}
+          </span>
         </div>
-        <Image src="/more.png" alt="" width={24} height={24}></Image>
+        {userId === post.user.id && <PostInfo postId={post.id} />}
       </div>
       {/* DESCRIPTION */}
       <div className="flex flex-col gap-4">
-        <div className="w-full min-h-96 relative">
-          <Image
-            src="/pexels-clement-proust-363898785-29284804.jpg"
-            alt="post image"
-            fill
-            className="object-cover rounded-md"
-          ></Image>
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni maxime
-          nesciunt optio repudiandae laborum obcaecati excepturi consequuntur
-          aspernatur? Quas obcaecati cumque dolorum quibusdam repellendus unde
-          suscipit perferendis nobis a impedit?
-        </p>
+        {post.img && (
+          <div className="w-full min-h-96 relative">
+            <Image
+              src={post.img}
+              alt="post image"
+              fill
+              className="object-cover rounded-md"
+            ></Image>
+          </div>
+        )}
+        <p>{post.desc}</p>
       </div>
       {/* INTERACTION */}
-      <div className="flex items-center justify-between text-xs">
-        <div className="flex gap-8">
-          <div className="flex items-center gap-2 bg-slate-500 p-2 rounded-xl">
-            <Image
-              src="/favorite.png"
-              alt="like"
-              width={24}
-              height={24}
-              className="cursor-pointer"
-            ></Image>
-            <span className="">|</span>
-            <span className="">
-              224 <span className="hidden md:inline">Likes</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-2 bg-slate-500 p-2 rounded-xl">
-            <Image
-              src="/comment.png"
-              alt="comment"
-              width={24}
-              height={24}
-              className="cursor-pointer pl-1"
-            ></Image>
-            <span className="">|</span>
-            <span className="">
-              224 <span className="hidden md:inline">Comments</span>
-            </span>
-          </div>
-        </div>
-        <div className="items-end">
-          <div className="flex items-center gap-2 bg-slate-500 p-2 rounded-xl">
-            <Image
-              src="/share.png"
-              alt="share"
-              width={24}
-              height={24}
-              className="cursor-pointer"
-            ></Image>
-            <span className="">|</span>
-            <span className="">
-              224 <span className="hidden md:inline">Shares</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <Comments></Comments>
+      <Suspense fallback="Loading...">
+        <PostInteraction
+          postId={post.id}
+          likes={post.likes.map((like) => like.userId)}
+          commentNumber={post._count.comments}
+          userId={userId as any}
+        ></PostInteraction>
+      </Suspense>
+      <Suspense fallback="Loading...">
+        <Comments postId={post.id} />
+      </Suspense>
     </div>
   );
 };

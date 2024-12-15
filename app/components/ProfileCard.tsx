@@ -1,37 +1,68 @@
 import Image from "next/image";
 import React from "react";
+import prisma from "../lib/client";
+import { auth } from "@clerk/nextjs/server";
+import Link from "next/link";
 
-const ProfileCard = () => {
+const ProfileCard = async () => {
+  const { userId } = await auth();
+
+  if (!userId) return null;
+
+  const user = await prisma.user.findFirst({
+    where: {
+      id: userId,
+    },
+    include: {
+      _count: {
+        select: {
+          followers: true,
+        },
+      },
+    },
+  });
+
+  console.log(user);
+
+  if (!userId) return null;
+
   return (
     <div className="p-4 text-sm flex flex-col border rounded-lg gap-6 mb-6">
       <div className="h-20 relative">
         <Image
-          src="/pexels-clement-proust-363898785-29649754.jpg"
+          src={user?.cover || "/noCover.png"}
           alt="cover_pic"
           fill
           className="rounded-md"
         ></Image>
         <Image
-          src="/pexels-matreding-18111149.jpg"
+          src={user?.avatar || "/noAvatar.png"}
           alt="avatar"
-          width={48}
-          height={48}
-          className="rounded-full w-12 h-12 object-cover absolute left-0 right-0 m-auto -bottom-6 ring-1 ring-slate-700 z-10"
+          fill
+          className="rounded-md"
         ></Image>
       </div>
       <div className="h-20 flex flex-col items-center gap-2 my-3">
-        <span className="font-semibold text-lg">John Higgins</span>
+        <span className="font-semibold text-lg">
+          {user?.name && user?.surname
+            ? user?.name + " " + user?.surname
+            : user?.username}
+        </span>
         <div className="flex items-center gap-1">
           <div className="flex">
             <Image src="/star.png" alt="star" width={12} height={12}></Image>
             <Image src="/star.png" alt="star" width={12} height={12}></Image>
             <Image src="/star.png" alt="star" width={12} height={12}></Image>
           </div>
-          <span className="text-xs text-slate-100">482376 Followers</span>
+          <span className="text-xs text-slate-100">
+            {user?._count.followers} Followers
+          </span>
         </div>
-        <button className="bg-green-400 rounded-md px-2 py-1 mt-1">
-          My Profile
-        </button>
+        <Link href={`/profile/${user?.username}`}>
+          <button className="bg-green-400 rounded-md px-2 py-1 mt-1">
+            My Profile
+          </button>
+        </Link>
       </div>
     </div>
   );

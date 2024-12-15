@@ -35,19 +35,7 @@ const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
           <span>Activity</span>
         </Link>
         <hr className="border-t-1 border-slate-800 w-36 self-center" />
-        <Link
-          href="/"
-          className="flex items-center gap-4 p-2 rounded-lg hover:text-green-400"
-        >
-          <Image
-            src="/flea-market.png"
-            alt="icon"
-            width={20}
-            height={20}
-          ></Image>
-          <span>Marketplace</span>
-        </Link>
-        <hr className="border-t-1 border-slate-800 w-36 self-center" />
+        
         <Link
           href="/"
           className="flex items-center gap-4 p-2 rounded-lg hover:text-green-400"

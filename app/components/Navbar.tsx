@@ -50,19 +50,6 @@ const Navbar = () => {
             />
             <span>Friends</span>
           </Link>
-          <Link
-            href="/"
-            className="flex items-center gap-2 hover:text-green-400"
-          >
-            <Image
-              src="/stories.png"
-              alt="Stories"
-              width={16}
-              height={16}
-              className="w-4 h-4"
-            />
-            <span>Stories</span>
-          </Link>
         </div>
         <div className="hidden xl:flex ml-20 bg-slate-800 px-2 items-center outline-none rounded-lg">
           <input
