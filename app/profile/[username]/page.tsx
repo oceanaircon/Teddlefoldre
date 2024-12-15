@@ -7,12 +7,12 @@ import prisma from "@/app/lib/client";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 
-const ProfilePage = async ({ params }: { params: { id: string } }) => {
-  const id = await params.id;
+const ProfilePage = async () => {
+  const { userId } = await auth();
 
   const user = await prisma.user.findFirst({
     where: {
-      id: id,
+      id: userId as any,
     },
     include: {
       _count: {
