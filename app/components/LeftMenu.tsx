@@ -8,9 +8,7 @@ const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
   return (
     <div className="flex flex-col">
       {type === "home" && <ProfileCard />}
-      <div
-        className="p-4 text-sm flex flex-col gap-2 border rounded-lg mb-6"
-      >
+      <div className="hidden p-4 text-sm flex-col gap-2 border rounded-lg mb-6">
         <Link
           href="/"
           className="flex items-center gap-4 p-2 rounded-lg hover:text-green-400"
