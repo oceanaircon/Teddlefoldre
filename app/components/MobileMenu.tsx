@@ -1,5 +1,6 @@
 "use client";
 
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -38,6 +39,7 @@ const MobileMenu = ({ user }: { user: any }) => {
             type="button"
             onClick={() => {
               router.push(`/profile/${user}`);
+              revalidatePath(`/profile/${user}`);
             }}
           >
             Posts
