@@ -2,16 +2,22 @@ import Link from "next/link";
 import React from "react";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
-import { ClerkLoaded, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
 const Navbar = async () => {
   const user = await currentUser();
 
   return (
-    <div className="h-24 flex items-center justify-between">
+    <div className="h-24 flex items-center justify-between gap-4">
       {/* LEFT */}
-      <div className="w-[20%]">
+      <div className="lg:block w-[20%]">
         <Link href={"/"} className="font-bold text-2xl">
           Teddlefoldre
         </Link>
@@ -19,7 +25,7 @@ const Navbar = async () => {
       {/* CENTER */}
       <div className="hidden sm:flex w-[50%] sm:pl-4 items-center justify-between">
         {/* LINKS */}
-        <div className="flex gap-6  text-white">
+        <div className="flex gap-6">
           <Link
             href={`/profile/${user?.username}`}
             className="flex items-center gap-2 hover:text-green-400"
@@ -62,7 +68,7 @@ const Navbar = async () => {
         </div>
       </div>
       {/* RIGHT */}
-      <div className="flex items-center justify-end text-white">
+      <div className="flex items-center justify-end">
         <ClerkLoaded>
           <SignedIn>
             <UserButton></UserButton>
