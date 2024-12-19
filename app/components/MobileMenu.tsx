@@ -4,10 +4,13 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const MobileMenu = async () => {
+const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const user = await currentUser();
+  const userName = async () => {
+    const user = await currentUser();
+    return user?.username;
+  };
 
   return (
     <div className="md:hidden">
@@ -34,9 +37,9 @@ const MobileMenu = async () => {
       {isOpen && (
         <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
           <Link href={"/"}>Home</Link>
-          <Link href={`/profile/${user?.username}`}>Posts</Link>
+          <Link href={`/profile/${userName}`}>Posts</Link>
           <Link href={"/"}>Friends</Link>
-          <Link href={`/profile/${user?.username}`}>Profile</Link>
+          <Link href={`/profile/${userName}`}>Profile</Link>
         </div>
       )}
     </div>
