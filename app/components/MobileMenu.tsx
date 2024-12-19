@@ -37,7 +37,7 @@ const MobileMenu = ({ user }: { user: any }) => {
           <button
             type="button"
             onClick={() => {
-              router.push("/dashboard");
+              router.push(`/profile/${user}`);
             }}
           >
             Posts
