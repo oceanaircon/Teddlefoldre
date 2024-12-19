@@ -9,8 +9,12 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const u = await currentUser();
+  const user = u?.username;
+
   return (
     <div className="h-24 flex items-center justify-between">
       {/* LEFT */}
@@ -98,7 +102,7 @@ const Navbar = () => {
             <Link href={"/sign-in"}>Sign in</Link>
           </SignedOut>
         </ClerkLoaded>
-        <MobileMenu />
+        <MobileMenu user={user} />
       </div>
     </div>
   );
