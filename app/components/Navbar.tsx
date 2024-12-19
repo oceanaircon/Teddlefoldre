@@ -17,7 +17,7 @@ const Navbar = async () => {
       </div>
 
       {/* RIGHT */}
-      <div className="flex items-center justify-end gap-4">
+      <div className="flex items-center justify-end gap-6">
         <ClerkLoaded>
           <SignedIn>
             <UserButton></UserButton>
