@@ -10,7 +10,6 @@ const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
       {type === "home" && <ProfileCard />}
       <div
         className="p-4 text-sm flex flex-col gap-2 border rounded-lg mb-6"
-        hidden
       >
         <Link
           href="/"
