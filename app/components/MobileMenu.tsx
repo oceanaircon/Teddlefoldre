@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const MobileMenu = ({ user }: { user: any }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const router = useRouter();
 
   return (
     <div className="md:hidden">
@@ -32,12 +34,14 @@ const MobileMenu = ({ user }: { user: any }) => {
       {isOpen && (
         <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
           <Link href={"/"}>Home</Link>
-          <Link
-            href={`/profile/${user}`}
-            onClick={redirect(`/profile/${user}`)}
+          <button
+            type="button"
+            onClick={() => {
+              router.push("/dashboard");
+            }}
           >
             Posts
-          </Link>
+          </button>
           <Link href={"/"}>Friends</Link>
           <Link href={`/profile/${user}`}>Profile</Link>
         </div>
