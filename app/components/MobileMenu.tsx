@@ -1,11 +1,9 @@
 "use client";
 
-import { revalidatePath } from "next/cache";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const MobileMenu = ({ user }: { user: any }) => {
+const MobileMenu = ({ username }: { username: any }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
@@ -34,18 +32,42 @@ const MobileMenu = ({ user }: { user: any }) => {
       </div>
       {isOpen && (
         <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
-          <Link href={"/"}>Home</Link>
           <button
             type="button"
             onClick={() => {
-              router.push(`/profile/${user}`);
+              router.push("/");
+              setIsOpen(false);
+            }}
+          >
+            Home
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              router.push(`/profile/${username}`);
               setIsOpen(false);
             }}
           >
             Posts
           </button>
-          <Link href={"/"}>Friends</Link>
-          <Link href={`/profile/${user}`}>Profile</Link>
+          <button
+            type="button"
+            onClick={() => {
+              router.push("/");
+              setIsOpen(false);
+            }}
+          >
+            Friends
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              router.push(`/profile/${username}`);
+              setIsOpen(false);
+            }}
+          >
+            Profile
+          </button>{" "}
         </div>
       )}
     </div>

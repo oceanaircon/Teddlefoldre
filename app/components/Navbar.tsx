@@ -12,8 +12,11 @@ import {
 import { currentUser } from "@clerk/nextjs/server";
 
 const Navbar = async () => {
-  const u = await currentUser();
-  const user = u?.username;
+  const user = await currentUser();
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="h-24 flex items-center justify-between">
@@ -102,7 +105,7 @@ const Navbar = async () => {
             <Link href={"/sign-in"}>Sign in</Link>
           </SignedOut>
         </ClerkLoaded>
-        <MobileMenu user={user} />
+        <MobileMenu username={user.username} />
       </div>
     </div>
   );
