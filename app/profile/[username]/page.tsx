@@ -48,10 +48,10 @@ const ProfilePage = async () => {
 
   return (
     <div className="text-white flex gap-6 pt-6">
-      <div className="hidden xl:block w-[17%]">
+      <div className="hidden sm:block w-[17%]">
         <LeftMenu type="profile"></LeftMenu>
       </div>
-      <div className="w-full lg:w-[70%] xl:w-[50%]">
+      <div className="w-full sm:w-[50%]">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center justify-center">
             <div className="w-full h-64 relative">
@@ -92,7 +92,7 @@ const ProfilePage = async () => {
           <Feed username={user.username}></Feed>
         </div>
       </div>
-      <div className="hidden lg:block w-[33%]">
+      <div className="hidden sm:block w-[33%]">
         <RightMenu user={user}></RightMenu>
       </div>
     </div>
