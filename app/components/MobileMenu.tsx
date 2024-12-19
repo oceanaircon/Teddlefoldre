@@ -1,10 +1,13 @@
 "use client";
 
+import { auth, currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const MobileMenu = () => {
+const MobileMenu = async () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const user = await currentUser();
 
   return (
     <div className="md:hidden">
@@ -31,9 +34,9 @@ const MobileMenu = () => {
       {isOpen && (
         <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
           <Link href={"/"}>Home</Link>
+          <Link href={`/profile/${user?.username}`}>Posts</Link>
           <Link href={"/"}>Friends</Link>
-          <Link href={"/"}>Groups</Link>
-          <Link href={"/"}>Login</Link>
+          <Link href={`/profile/${user?.username}`}>Profile</Link>
         </div>
       )}
     </div>
