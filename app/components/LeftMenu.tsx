@@ -8,34 +8,10 @@ const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
   return (
     <div className="flex flex-col">
       {type === "home" && <ProfileCard />}
-      <div className="p-4 text-sm flex flex-col gap-2 border rounded-lg mb-6">
-        <Link
-          href="/"
-          className="flex items-center gap-4 p-2 rounded-lg hover:text-green-400"
-        >
-          <Image
-            src="/posts.png"
-            alt="posts_icon"
-            width={20}
-            height={20}
-          ></Image>
-          <span>My Posts</span>
-        </Link>
-        <hr className="border-t-1 border-slate-800 w-36 self-center" />
-        <Link
-          href="/"
-          className="flex items-center gap-4 p-2 rounded-lg hover:text-green-400"
-        >
-          <Image
-            src="/exercise.png"
-            alt="posts_icon"
-            width={24}
-            height={24}
-          ></Image>
-          <span>Activity</span>
-        </Link>
-        <hr className="border-t-1 border-slate-800 w-36 self-center" />
-        
+      <div
+        className="p-4 text-sm flex flex-col gap-2 border rounded-lg mb-6"
+        hidden
+      >
         <Link
           href="/"
           className="flex items-center gap-4 p-2 rounded-lg hover:text-green-400"

@@ -2,13 +2,7 @@ import Link from "next/link";
 import React from "react";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
-import {
-  ClerkLoaded,
-  ClerkLoading,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkLoaded, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
 const Navbar = async () => {
@@ -68,7 +62,7 @@ const Navbar = async () => {
         </div>
       </div>
       {/* RIGHT */}
-      <div className="flex items-center justify-end">
+      <div className="flex items-center justify-end gap-4">
         <ClerkLoaded>
           <SignedIn>
             <UserButton></UserButton>
