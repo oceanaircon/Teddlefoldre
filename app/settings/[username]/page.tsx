@@ -46,7 +46,7 @@ const ProfileSettingsPage = async () => {
 
   return (
     <div className="text-white flex gap-6 pt-6">
-      <div className="w-full xl:w-[80%]">
+      <div className="w-full">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center justify-center">
             <div className="w-full h-64 relative">
