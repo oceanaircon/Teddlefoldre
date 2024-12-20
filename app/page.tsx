@@ -5,7 +5,7 @@ import RightMenu from "./components/RightMenu";
 
 const Homepage = () => {
   return (
-    <div className="text-white flex gap-6 pt-6">
+    <div className="flex gap-6 pt-6">
       <div className="hidden lg:block w-[26%]">
         <LeftMenu type="home"></LeftMenu>
       </div>

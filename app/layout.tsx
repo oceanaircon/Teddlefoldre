@@ -23,7 +23,7 @@ export default function RootLayout({
           <div className="w-full bg-black text-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
             <Navbar />
           </div>
-          <div className="bg-black px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+          <div className="bg-black text-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
             {children}
           </div>
         </body>

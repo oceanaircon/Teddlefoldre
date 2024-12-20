@@ -32,9 +32,11 @@ const Friends = async () => {
     <div>
       {friends.map((friend) => (
         <div key={friend.id}>
-          <span>{friend.username}</span>
+          <span>
+            {friend.name} + " " + {friend.surname}
+          </span>
           <br />
-          <span>{friend.surname}</span>
+          <span>{friend.description}</span>
         </div>
       ))}
     </div>
