@@ -31,7 +31,7 @@ const MobileMenu = ({ username }: { username: any }) => {
         />
       </div>
       {isOpen && (
-        <div className="absolute left-0 top-12 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
+        <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
           <button
             type="button"
             onClick={() => {
