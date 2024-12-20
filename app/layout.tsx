@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={nunito.className} background-color="black">
+        <body className={`${nunito.className} bg-black`}>
           <div className="w-full bg-black text-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
             <Navbar />
           </div>
