@@ -4,6 +4,7 @@ import prisma from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
+import { redirect } from "next/navigation";
 
 const friendss = async () => {
   const { userId } = await auth();
@@ -32,20 +33,20 @@ const friendss = async () => {
   });
 
   return (
-    <div>
+    <div className="flex flex-row items-center justify-center">
       {friends.map((friend) => (
         <div
-          className="flex flex-col gap-4 border rounded-lg bg-slate-800"
+          className="flex flex-col gap-4 border rounded-lg bg-slate-800 p-4"
           key={friend.id}
         >
-          <div className="flex items-center gap-2">
+          <button onClick={redirect("/")} className="flex items-center gap-2">
             <span className="text-xl font-semibold">
               {friend.name && friend.surname
                 ? friend.name + " " + friend.surname
                 : friend.friendsname}
             </span>
-            <span className="text-sm">@{friend.friendsname}</span>
-          </div>
+            <span className="text-sm">@{friend.username}</span>
+          </button>
           {friend.description && <p>{friend.description}</p>}
           {friend.city && (
             <div className="flex items-center gap-2">
