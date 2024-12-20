@@ -89,7 +89,9 @@ const ProfilePage = async () => {
               </div>
             </div>
           </div>
-          <Feed username={user.username}></Feed>
+          <div className="w-full">
+            <Feed username={user.username}></Feed>
+          </div>
         </div>
       </div>
       <div className="hidden md:block w-[35%]">
