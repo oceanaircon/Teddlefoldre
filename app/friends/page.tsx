@@ -29,12 +29,14 @@ const Friends = async () => {
   });
 
   return (
-    <div>
+    <div className="flex flex-row flex-wrap">
       {friends.map((friend) => (
-        <div key={friend.id}>
-          <span>
-            {friend.name} + " " + {friend.surname}
-          </span>
+        <div
+          key={friend.id}
+          className="flex flex-col items-center justify-center bg-slate-800 border-slate-300 rounded-md gap-4 p-4"
+        >
+          <span>{friend.name}</span>
+          <span>{friend.surname}</span>
           <br />
           <span>{friend.description}</span>
         </div>
