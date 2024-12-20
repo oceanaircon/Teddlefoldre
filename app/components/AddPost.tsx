@@ -39,13 +39,7 @@ const AddPost = () => {
             name="desc"
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
-          <Image
-            src="/happy-face.png"
-            alt="emoji"
-            width={20}
-            height={20}
-            className="w-5 h-5 cursor-pointer"
-          ></Image>
+          
           <AddPostButton></AddPostButton>
         </form>
         {/* POST OPTIONS */}
