@@ -3,6 +3,7 @@ import React from "react";
 import prisma from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
+import moment from "moment";
 
 const friendss = async () => {
   const { userId } = await auth();
@@ -99,7 +100,7 @@ const friendss = async () => {
               height={16}
             ></Image>
             <span>
-              Joined at {friend.createdAt.format("DD-MM-YYYY").toString()}
+              Joined at {moment(friend.createdAt).format("DD-MM-YYYY")}
             </span>
           </div>
         </div>
