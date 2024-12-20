@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const MobileMenu = ({ user }: { user: any }) => {
+const MobileMenu = ({ username }: { username: any }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
@@ -44,7 +44,7 @@ const MobileMenu = ({ user }: { user: any }) => {
           <button
             type="button"
             onClick={() => {
-              router.push(`/profile/${user.username}`);
+              router.push(`/profile/${username}`);
               setIsOpen(false);
             }}
           >
@@ -71,13 +71,12 @@ const MobileMenu = ({ user }: { user: any }) => {
           <button
             type="button"
             onClick={() => {
-              router.push(`/settings/${user.username}`);
+              router.push(`/settings/${username}`);
               setIsOpen(false);
             }}
           >
             Profile
           </button>
-          
         </div>
       )}
     </div>
