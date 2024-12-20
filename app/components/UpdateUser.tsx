@@ -33,7 +33,7 @@ const UpdateUser = ({ user }: { user: User }) => {
         Update
       </span>
       {open && (
-        <div className="absolute w-400 h-screen top-12 left-0 bg-black bg-opacity-65 flex items-center justify-center z-50 ">
+        <div className="absolute w-400 h-screen top-24 left-0 bg-black bg-opacity-65 flex items-center justify-center z-50 ">
           <form
             action={(formData) =>
               formAction({ formData, cover: cover?.secure_url || "" })
