@@ -4,7 +4,6 @@ import prisma from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
-import { redirect } from "next/navigation";
 
 const friendss = async () => {
   const { userId } = await auth();
@@ -33,7 +32,7 @@ const friendss = async () => {
   });
 
   return (
-    <div className="flex flex-row items-center justify-center">
+    <div className="flex flex-row flex-wrap gap-4 items-center justify-center mt-4 p-4">
       {friends.map((friend) => (
         <div
           className="flex flex-col gap-4 border rounded-lg bg-slate-800 p-4"
