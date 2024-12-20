@@ -39,7 +39,7 @@ const MobileMenu = ({ username }: { username: any }) => {
               setIsOpen(false);
             }}
           >
-            Home
+            Feed
           </button>
           <button
             type="button"
@@ -48,16 +48,25 @@ const MobileMenu = ({ username }: { username: any }) => {
               setIsOpen(false);
             }}
           >
-            Posts
+            My Posts
           </button>
           <button
             type="button"
             onClick={() => {
-              router.push("/");
+              router.push("/friends");
               setIsOpen(false);
             }}
           >
             Friends
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              router.push("/birthdays");
+              setIsOpen(false);
+            }}
+          >
+            Birthdays
           </button>
           <button
             type="button"
