@@ -39,14 +39,14 @@ const friendss = async () => {
           className="flex flex-col gap-4 border rounded-lg bg-slate-800 p-4"
           key={friend.id}
         >
-          <div className="flex items-center gap-2" onClick={redirect("/")}>
+          <Link className="flex items-center gap-2" href={"/"}>
             <span className="text-xl font-semibold">
               {friend.name && friend.surname
                 ? friend.name + " " + friend.surname
                 : friend.friendsname}
             </span>
             <span className="text-sm">@{friend.username}</span>
-          </div>
+          </Link>
           {friend.description && <p>{friend.description}</p>}
           {friend.city && (
             <div className="flex items-center gap-2">
