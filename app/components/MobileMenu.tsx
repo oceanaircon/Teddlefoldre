@@ -2,8 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import RightMenu from "./RightMenu";
-import { User } from "@clerk/nextjs/server";
 
 const MobileMenu = ({ user }: { user: any }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,9 +68,16 @@ const MobileMenu = ({ user }: { user: any }) => {
           >
             Birthdays
           </button>
-          <div>
-            <RightMenu user={user}></RightMenu>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              router.push(`/settings/${user.username}`);
+              setIsOpen(false);
+            }}
+          >
+            Profile
+          </button>
+          
         </div>
       )}
     </div>
