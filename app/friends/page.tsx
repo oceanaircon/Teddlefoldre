@@ -29,7 +29,7 @@ const Friends = async () => {
   });
 
   return (
-    <div className="flex flex-row flex-wrap items-center">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-4">
       {friends.map((friend) => (
         <div
           key={friend.id}
