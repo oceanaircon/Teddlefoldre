@@ -26,7 +26,7 @@ const Navbar = async () => {
             <Link href={"/sign-in"}>Sign in</Link>
           </SignedOut>
         </ClerkLoaded>
-        <MobileMenu username={user?.username} />
+        <MobileMenu user={user} />
       </div>
     </div>
   );

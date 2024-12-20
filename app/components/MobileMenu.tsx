@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import RightMenu from "./RightMenu";
+import { User } from "@clerk/nextjs/server";
 
-const MobileMenu = ({ username }: { username: any }) => {
+const MobileMenu = ({ user }: { user: any }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
@@ -31,7 +33,7 @@ const MobileMenu = ({ username }: { username: any }) => {
         />
       </div>
       {isOpen && (
-        <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
+        <div className="absolute left-0 top-12 w-full h-[calc(100vh-96px)] text-white bg-black flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
           <button
             type="button"
             onClick={() => {
@@ -44,7 +46,7 @@ const MobileMenu = ({ username }: { username: any }) => {
           <button
             type="button"
             onClick={() => {
-              router.push(`/profile/${username}`);
+              router.push(`/profile/${user.username}`);
               setIsOpen(false);
             }}
           >
@@ -68,15 +70,9 @@ const MobileMenu = ({ username }: { username: any }) => {
           >
             Birthdays
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              router.push(`/profile/${username}`);
-              setIsOpen(false);
-            }}
-          >
-            Profile
-          </button>{" "}
+          <div>
+            <RightMenu user={user}></RightMenu>
+          </div>
         </div>
       )}
     </div>
