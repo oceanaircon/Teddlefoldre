@@ -98,7 +98,9 @@ const friendss = async () => {
               width={16}
               height={16}
             ></Image>
-            <span>Joined at {friend.createdAt.format("DD-MM-YYYY")}</span>
+            <span>
+              Joined at {friend.createdAt.format("DD-MM-YYYY").toString()}
+            </span>
           </div>
         </div>
       ))}
