@@ -7,19 +7,15 @@ import prisma from "@/app/lib/client";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 
-type Params = Promise<{ profileId: string }>;
+type Params = Promise<{ username: string }>;
 
 const ProfilePage = async (props: { params: Params }) => {
   const params = await props.params;
-  const id = params.profileId;
-
-  const { userId: currentUserId } = await auth();
-
-  if (String(currentUserId) !== String(id)) return <h1>Not authenticated</h1>;
+  const username = params.username;
 
   const user = await prisma.user.findFirst({
     where: {
-      id: id,
+      username,
     },
     include: {
       _count: {
@@ -33,6 +29,8 @@ const ProfilePage = async (props: { params: Params }) => {
   });
 
   if (!user) return notFound();
+
+  const { userId: currentUserId } = await auth();
 
   let isBlocked;
 
