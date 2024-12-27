@@ -7,7 +7,7 @@ import prisma from "@/app/lib/client";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 
-const ProfilePage = async ({ params }: { params: { id: string } }) => {
+const ProfilePage = async (props: { params: { id: string } }) => {
   const { userId } = (await auth()) as any;
 
   const user = await prisma.user.findFirst({
@@ -29,7 +29,7 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
 
   const { userId: currentUserId } = await auth();
 
-  if (params.id !== currentUserId) return null;
+  if (props.params.id !== currentUserId) return null;
 
   let isBlocked;
 
