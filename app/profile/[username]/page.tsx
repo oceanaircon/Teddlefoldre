@@ -92,8 +92,8 @@ const ProfilePage = async (props: { params: Params }) => {
               </div>
             </div>
           </div>
-          <div className="w-full">
-            {username !== user.username ? (
+          <div className="hidden sm:block w-full">
+            {currentUserId !== user.id ? (
               <span>Invisible</span>
             ) : (
               <Feed username={user.username}></Feed>
@@ -101,7 +101,7 @@ const ProfilePage = async (props: { params: Params }) => {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-[35%]">
+      <div className="w-[20%] md:w-[35%]">
         <RightMenu user={user}></RightMenu>
       </div>
     </div>
