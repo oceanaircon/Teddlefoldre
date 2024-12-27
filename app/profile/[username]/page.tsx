@@ -93,11 +93,15 @@ const ProfilePage = async (props: { params: Params }) => {
             </div>
           </div>
           <div className="w-full">
-            <Feed username={user.username}></Feed>
+            {username !== user.username ? (
+              <span>Invisible</span>
+            ) : (
+              <Feed username={user.username}></Feed>
+            )}
           </div>
         </div>
       </div>
-      <div className="hidden md:block w-[35%]">
+      <div className="w-full md:w-[35%]">
         <RightMenu user={user}></RightMenu>
       </div>
     </div>
