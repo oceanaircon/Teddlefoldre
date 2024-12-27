@@ -49,7 +49,7 @@ const Friends = async () => {
   return (
     <div className="flex flex-row flex-wrap gap-4 items-center justify-center mt-4 p-4">
       {/* POTENTIAL FRIENDS */}
-      <div className="flex flex-col flex-wrap gap-4 items-start justify-start p-4">
+      <div className="flex flex-col gap-4 p-4">
         {potentialFriends.map((potentialFriend) => (
           <div className="flex flex-row p-4 gap-4" key={potentialFriend.id}>
             <span className="text-lg">{potentialFriend.username}</span>
