@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
 
-const friendss = async () => {
+const Friends = async () => {
   const { userId } = await auth();
 
   if (!userId) return null;
@@ -31,8 +31,36 @@ const friendss = async () => {
     },
   });
 
+  const potentialFriends = await prisma.user.findMany({
+    where: {
+      id: {
+        notIn: followingIds,
+      },
+    },
+    select: {
+      id: true,
+      username: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
   return (
     <div className="flex flex-row flex-wrap gap-4 items-center justify-center mt-4 p-4">
+      {/* POTENTIAL FRIENDS */}
+      <div className="flex flex-col flex-wrap gap-4 items-center justify-center p-4">
+        {potentialFriends.map((potentialFriend) => (
+          <div className="flex flex-row p-4 gap-4" key={potentialFriend.id}>
+            <span className="text-green-400 font-extrabold ">
+              {potentialFriend.username}
+            </span>
+            <span>
+              Follow
+            </span>
+          </div>
+        ))}
+      </div>
       {friends.map((friend) => (
         <div
           className="flex flex-col gap-4 border rounded-lg bg-slate-800 p-4"
@@ -109,4 +137,4 @@ const friendss = async () => {
   );
 };
 
-export default friendss;
+export default Friends;
