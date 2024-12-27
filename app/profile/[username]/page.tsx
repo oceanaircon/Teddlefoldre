@@ -101,7 +101,7 @@ const ProfilePage = async (props: { params: Params }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap md:w-[35%]">
+      <div className="hidden md:w-[35%]">
         <RightMenu user={user}></RightMenu>
       </div>
     </div>
