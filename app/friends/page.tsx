@@ -56,7 +56,11 @@ const Friends = async () => {
               {potentialFriend.username}
             </span>
             <span>
-              Follow
+              <Link
+                href={`https://teddlefoldre.vercel.app/profile/${potentialFriend.username}`}
+              >
+                Profile
+              </Link>
             </span>
           </div>
         ))}
