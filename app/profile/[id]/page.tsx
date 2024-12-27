@@ -11,15 +11,15 @@ type Params = Promise<{ profileId: string }>;
 
 const ProfilePage = async (props: { params: Params }) => {
   const params = await props.params;
-  const profileId = params.profileId;
+  const id = params.profileId;
 
   const { userId: currentUserId } = await auth();
 
-  if (currentUserId !== profileId) return <h1>Not authenticated</h1>;
+  if (String(currentUserId) !== String(id)) return <h1>Not authenticated</h1>;
 
   const user = await prisma.user.findFirst({
     where: {
-      id: profileId,
+      id: id,
     },
     include: {
       _count: {
