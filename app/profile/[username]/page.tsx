@@ -92,7 +92,7 @@ const ProfilePage = async (props: { params: Params }) => {
               </div>
             </div>
           </div>
-          <div className="max-sm:w-[50%] w-full">
+          <div className="w-full">
             {currentUserId !== user.id ? (
               <span>Invisible</span>
             ) : (
@@ -101,7 +101,7 @@ const ProfilePage = async (props: { params: Params }) => {
           </div>
         </div>
       </div>
-      <div className="max-sm:w-[50%] w-[35%]">
+      <div className="flex flex-wrap md:w-[35%]">
         <RightMenu user={user}></RightMenu>
       </div>
     </div>
